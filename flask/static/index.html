@@ -22,9 +22,29 @@
     <script src="js/bootstrap.min.js"></script>
   <script>
   $(document).ready(function(){
-    $("button").click(function(){
-        $("#div1").load("/hello/Tadhg");
+    $("#1").click(function(){
+        $("#div1").load("/hello/joe");
     });
+});
+
+	$(document).ready(function(){
+		$("#2").click(function(){
+			$.get("/hello/Tadhg", function(data, status){
+				alert("Data: " + data + "\nStatus: " + status);
+			});
+    });
+});
+
+	$(document).ready(function(){
+	$("#3").click(function(){
+    $.post("/hello/",
+    {
+        name: "Donald Duck",
+    },
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+		});
+	});
 });
   </script>
   </head>
@@ -54,7 +74,15 @@
 	</form>
 <div id="div1"><h2>Let jQuery AJAX Change This Text To Hello.html</h2></div>
 
-	<button>Click Here</button>
+	<button id="1">Click Here</button>
+	
+<div id="div2"><h2>Click below to change the text using get</h2></div>
+
+	<button id="2">Click Here</button>
+
+<div id="div3"><h2>Click below to change the text using post</h2></div>
+
+	<button id="3">Click Here</button>
     
   </body>
 </html>
